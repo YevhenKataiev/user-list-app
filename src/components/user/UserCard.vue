@@ -42,7 +42,6 @@ const props = defineProps<{ user: IUser }>();
     align-items: center
 
     img
-      width: 100%
       height:2em
       width: 2em
 </style>
