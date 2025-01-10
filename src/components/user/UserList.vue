@@ -2,7 +2,7 @@
 import type { IUser } from '@/types/user.types';
 import { useUserStore } from '@/stores/users';
 import { useUser } from '@/composables/useUser';
-import { onMounted, ref } from 'vue';
+import { computed, onMounted, ref } from 'vue';
 import Loader from '../global/Loader.vue';
 import Filter from '../global/Filter.vue';
 
@@ -11,6 +11,7 @@ const { userList, updateUserList } = userStore;
 const { getUserList } = useUser();
 const { data, loading, fetchData } = getUserList();
 const list = ref<IUser[]>(userList);
+const filteredList = computed(() => list.value.filter(user => user.name.toLowerCase().includes(search.value)))
 const search = ref<string>('');
 const fetchlist = async () => {
 	await fetchData();
@@ -22,8 +23,10 @@ onMounted(() => { fetchlist() })
 <template>
 	<Loader v-if="loading" />
 	<div v-else>
-		<Filter />
-		<pre>{{ list }}</pre>
+		<Filter v-model="search" />
+		<div v-for="user in filteredList" :key="user.id">
+			{{ user }}
+		</div>
 	</div>
 
 </template>
