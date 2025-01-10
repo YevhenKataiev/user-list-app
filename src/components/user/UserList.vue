@@ -15,20 +15,20 @@ const list = ref<IUser[]>(userList);
 const filteredList = computed(() => list.value.filter(user => user.name.toLowerCase().includes(search.value)))
 const search = ref<string>('');
 const fetchlist = async () => {
-  await fetchData();
-  updateUserList(data.value as IUser[]);
-  list.value = data.value as IUser[]
+	await fetchData();
+	updateUserList(data.value as IUser[]);
+	list.value = data.value as IUser[]
 };
 onMounted(() => { fetchlist() })
 </script>
 <template>
-  <Loader v-if="loading" />
-  <div v-else>
-    <Filter v-model="search" />
-    <div class="container">
-      <UserCard v-for="user in filteredList" :key="user.id" :user="user" />
-    </div>
-  </div>
+	<Loader v-if="loading" />
+	<div v-else>
+		<Filter v-model="search" />
+		<div class="container">
+			<UserCard v-for="user in filteredList" :key="user.id" :user="user" />
+		</div>
+	</div>
 
 </template>
 <style lang="sass" scoped>
@@ -36,6 +36,7 @@ onMounted(() => { fetchlist() })
 	display: grid
 	grid-template-columns: 1fr
 	gap: 1rem
+	margin-top:	2rem
 
 
 @media (min-width: 480px)
