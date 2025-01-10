@@ -6,12 +6,12 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      name: 'home',
+      name: 'main',
       component: MainView,
     },
     {
       path: '/:id',
-      name: 'about',
+      name: 'user',
       component: () => import('../views/ItemView.vue'),
     },
   ],
