@@ -94,34 +94,40 @@ onMounted(() => {
     width: 64px
     height: 40px
     margin-bottom: 2rem
-
-  .card
-    .data-columns
-      display: grid
-      grid-template-columns:1fr 1fr
-
-      div
-        margin-top: 1rem
-
-    .part
-      display: flex
-      width: 100%
-      justify-content: space-evenly
-      margin-bottom: 2rem
-
-    .part > div
-      width: 320px
-      .photo
-        width: 320px
-        height: 320px
-        border: 1px solid
-        border-radius: 10px
+    .card
+      .data-columns
         display: flex
-        justify-content: center
-        align-items: center
+        flex-direction: column
+        margin-bottom: 1rem
 
-        img
-          height:160px
-          width: 160px
+  @media (min-width: 640px)
+    .card
+      .data-columns
+        display: grid
+        grid-template-columns:1fr 1fr
+
+        div
+          margin-top: 1rem
+
+      .part
+        display: flex
+        width: 100%
+        justify-content: space-evenly
+        margin-bottom: 2rem
+
+      .part > div
+        width: 320px
+        .photo
+          width: 320px
+          height: 320px
+          border: 1px solid
+          border-radius: 10px
+          display: flex
+          justify-content: center
+          align-items: center
+
+          img
+            height:160px
+            width: 160px
 
 </style>
